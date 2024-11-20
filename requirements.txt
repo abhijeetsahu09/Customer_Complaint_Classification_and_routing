@@ -1,0 +1,10 @@
+# pip install virtualenv
+# python -m venv myvenv
+# .\myvenv\Scripts\activate
+
+# python app.py
+
+Flask
+pandas
+joblib
+
