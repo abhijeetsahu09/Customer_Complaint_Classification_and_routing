@@ -14,12 +14,16 @@ SENDER_EMAIL = 'testing.g16.project@gmail.com'
 SENDER_PASSWORD = 'wrwwojlsosmegyex'
 
 DEPARTMENT_EMAILS = {
-    "Administration": "abhijeetsahu937@gmail.com",
-    "Exam": "abhijeetsahu937@gmail.com",
-    "Finance": "abhijeetsahu937@gmail.com",
-    "Library": "abhijeetsahu937@gmail.com",
-    "Hostel": "abhijeetsahu937@gmail.com",
-    "Canteen": "abhijeetsahu937@gmail.com"
+    "Administration": "xyz@gmail.com",
+    "Exam": "xyz@gmail.com",
+    "Finance": "xyz@gmail.com",
+    "Library": "xyz@gmail.com",
+    "Hostel": "xyz@gmail.com",
+    "Canteen": "xyz@gmail.com",
+    "Admission": "xyz@gmail.com",
+    "Sports": "xyz@gmail.com",
+    "Training and Placement": "xyz@gmail.com",
+    "Transport": "xyz@gmail.com"
 }
 
 def send_email(recipient_email, subject, body):
