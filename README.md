@@ -7,24 +7,6 @@
 ![NLP](https://img.shields.io/badge/NLP-TF--IDF%20%7C%20NLTK-green)
 ![Best Accuracy](https://img.shields.io/badge/Best%20Accuracy-98%25%20(SVM)-brightgreen)
 
----
-
-## 📌 Table of Contents
-1. [Problem Statement](#-problem-statement)
-2. [Key Features](#-key-features)
-3. [System Architecture](#-system-architecture)
-4. [Dataset](#-dataset)
-5. [Methodology](#-methodology)
-6. [Results](#-results)
-7. [User Interface](#-user-interface)
-8. [Tech Stack](#-tech-stack)
-9. [Getting Started](#-getting-started)
-10. [Limitations & Future Work](#-limitations--future-work)
-11. [Team](#-team)
-12. [Documentation & References](#-documentation--references)
-
----
-
 ## 🎯 Problem Statement
 
 Educational institutions receive a large volume of student complaints and feedback, mostly by email. Handling them manually is slow, error-prone and often leads to **delayed responses and misrouted complaints**. Most existing grievance systems also:
