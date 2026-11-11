@@ -1,15 +1,8 @@
 import pandas as pd
 import re
-
-
-# def preprocess_text(text):
-#     text = re.sub(r'\s+', ' ', text)  # Remove extra whitespace
-#     text = re.sub(r'[^a-zA-Z0-9\s]', '', text)  # Remove special characters
-#     text = text.lower()  # Convert text to lowercase
-#     return text
+from googletrans import Translator
 
 def load_feedback_from_csv(file):
-    # df = pd.read_csv(file)
 
     if file:
         try:
@@ -22,7 +15,19 @@ def load_feedback_from_csv(file):
                 file.seek(0)
                 df = pd.read_csv(file, encoding='cp1252')
 
-    # df['feedback'] = df['feedback'].apply(preprocess_text)
+    translator = Translator()
+
+    def translate_if_needed(text):
+        detected = translator.detect(text)
+        if detected.lang in ['hi', 'mr', 'te']:
+            translation = translator.translate(text, dest='en')
+            return translation.text
+        else:
+            return text
+        
+    df['feedback'] = df['feedback'].apply(translate_if_needed)
 
     feedback_list = df['feedback'].tolist()
     return feedback_list
+
+

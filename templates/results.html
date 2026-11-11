@@ -6,18 +6,16 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body class="results">
-    <h1>Compliant Classification Results</h1>
+    <h1>Complaint Classification Results</h1>
     <table>
         <tr>
-            <th>Compliant</th>
+            <th>Complaint</th>
             <th>Category</th>
-            <!-- <th>Routed Department</th> -->
         </tr>
         {% for result in results %}
         <tr>
             <td>{{ result.feedback }}</td>
             <td>{{ result.category }}</td>
-            <!-- <td>{{ result.department }}</td> -->
         </tr>
         {% endfor %}
     </table>

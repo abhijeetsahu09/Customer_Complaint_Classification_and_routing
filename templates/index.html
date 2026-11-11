@@ -8,13 +8,27 @@
 </head>
 <body class="index">
     <div class="container">
-        <h1>Upload Feedback CSV</h1>
+        <h1>Upload Complaint CSV</h1>
         <p>Please upload a CSV file containing customer complaint for classification and routing. (With Column Name as feedback)</p>
         
         <form action="{{ url_for('upload_csv') }}" method="post" enctype="multipart/form-data">
             <input type="file" name="file" accept=".csv" required>
             <button type="submit">Upload and Classify</button>
         </form>
+
+        <h2>Fetch Complaints from Email</h2>
+        <form action="{{ url_for('fetch_emails_data') }}" method="get">
+            <button type="submit">Fetch Emails and Classify</button>
+        </form>
+
+        {# 
+        <h2>Upload Scanned or Typed Complaint (PDF / DOCX)</h2>
+            <p>Upload a digital PDF or a Word (.docx) file containing the complaint text. The system will extract, translate (if needed), and classify it.</p>
+            <form action="{{ url_for('upload_document') }}" method="post" enctype="multipart/form-data">
+                <input type="file" name="document" accept=".pdf,.docx" required>
+                <button type="submit">Upload and Classify Document</button>
+            </form>
+        #}
     </div>
 </body>
 </html>

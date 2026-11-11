@@ -1,6 +1,6 @@
-# 📬 Automated Routing and Classification of Customer Complaints
+# 📬 Automated Routing and Classification of Customer Complaints (Multilingual)
 
-> An NLP + Machine Learning system that reads complaints (from a CSV upload or directly from a mailbox), classifies each complaint into the responsible department, and routes it to that department by email, with no manual sorting.
+> An NLP + Machine Learning system that reads complaints (from a CSV upload or directly from a mailbox), translates Hindi / Marathi / Telugu text into English, classifies each complaint into the responsible department, and routes it to that department by email, with no manual sorting.
 
 ![Python](https://img.shields.io/badge/Python-3.x-blue)
 ![scikit-learn](https://img.shields.io/badge/ML-scikit--learn-orange)
@@ -11,6 +11,7 @@
 
 Educational institutions receive a large volume of student complaints and feedback, mostly by email. Handling them manually is slow, error-prone and often leads to **delayed responses and misrouted complaints**. Most existing grievance systems also:
 
+- only understand **English**, which excludes students who write in regional languages,
 - stop at **classification** and never perform the actual **routing** to a department,
 - are trained on generic feedback data rather than **academic-institution-specific** complaints.
 
@@ -18,9 +19,17 @@ Educational institutions receive a large volume of student complaints and feedba
 
 ## ✨ Key Features
 
+- 🌐 **Multilingual input** – Hindi, Marathi and Telugu complaints are auto-detected and translated to English; English text skips translation.
 - 🧠 **ML classification** – compares Logistic Regression, SVM and Random Forest on TF-IDF features; SVM is the best performer (~98% accuracy).
 - 📧 **Automated email routing** – classified complaints are forwarded to the responsible department via SMTP.
+- 📥 **Two input modes** – upload a CSV of complaints *or* fetch complaints directly from a mailbox (IMAP).
 - 🎯 **Focused scope** – deliberately excludes sentiment analysis to keep the system lightweight and purpose-built for routing.
+
+## 🏗️ System Architecture
+
+![System Architecture](assets/system-architecture.png)
+
+**Flow:** UI → (CSV upload / mailbox fetch) → language detection → translate to English if needed → preprocessing → embedding / feature generation → ML classification → email routing → complaint delivered to the designated department email.
 
 ## 🗂️ Dataset
 
@@ -47,7 +56,8 @@ category: library
 3. **Feature extraction** – **TF-IDF** vectorization.
 4. **Classification** – Logistic Regression, SVM and Random Forest, with hyperparameters tuned via **grid search**.
 5. **Evaluation** – accuracy, precision, recall, F1-score and confusion matrices.
-6. **Routing** – predicted category is mapped to the department's email address and the complaint is forwarded over SMTP.
+6. **Language handling** – language detection + translation for Hindi / Marathi / Telugu before classification.
+7. **Routing** – predicted category is mapped to the department's email address and the complaint is forwarded over SMTP.
 
 ## 📊 Results
 
@@ -161,9 +171,30 @@ A simple web interface with two entry points:
 | Language | Python |
 | ML | scikit-learn (SVM, Logistic Regression, Random Forest), TF-IDF |
 | NLP preprocessing | NLTK / spaCy |
+| Language detection & translation | langdetect, Google Translate / Indic NLP tooling |
+| Email retrieval | IMAP (`imaplib`) |
 | Email routing | SMTP (Gmail SMTP for testing) |
 | Data | CSV (`feedback`, `category`) |
 | Development | Jupyter Notebook / Google Colab |
+
+## 🚀 Getting Started
+
+```bash
+# 1. Clone the repository
+git clone https://github.com/abhijeetsahu09/Customer_Complaint_Classification_and_routing.git
+cd Customer_Complaint_Classification_and_routing
+
+# 2. Create a virtual environment and install dependencies
+python -m venv venv
+source venv/bin/activate        # Windows: venv\Scripts\activate
+pip install -r requirements.txt
+
+# 3. Configure email credentials (use an app password, never your real password)
+cp .env.example .env            # then edit IMAP / SMTP settings
+
+# 4. Run the application
+python app.py
+```
 
 ## ⚠️ Limitations & Future Work
 
